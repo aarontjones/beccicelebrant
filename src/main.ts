@@ -51,7 +51,7 @@ function createNavItem(text: string, href: string): HTMLAnchorElement {
 }
 
 const navItems = [
-    { text: "Celebrations", href: "#/celebrations" },
+    { text: "Ceremonies", href: "#/ceremonies" },
     { text: "FAQ", href: "#/faq" },
     { text: "Contact & Fees", href: "#/contact" }
 ]
@@ -73,13 +73,31 @@ function homePage(): HTMLElement {
     const wrapper = document.createElement("div")
     wrapper.className = "page-wrapper"
 
+    // Main Title
     const pageTitle = document.createElement("h2")
     pageTitle.className = "page-title"
-    pageTitle.innerText = "Home"
+    pageTitle.innerText = "About Me"
+
+    // About me section
+    const aboutMe = document.createElement("div")
+    aboutMe.className = "info-container"
+
+    const aboutMeDesc = document.createElement("p")
+    aboutMeDesc.className = "info-description"
+    aboutMeDesc.innerText = `
+    Put in information about yourself, what you "specialise" in, if thats how celebrants work. Wedding section below should be filled out as well. No information about fees on this page, ill put those on Contact & Fees section.
+    `
+
+    aboutMe.appendChild(aboutMeDesc)
+
+    // Wedding Subtitle
+    const weddingTitle = document.createElement("h2")
+    weddingTitle.className = "page-title"
+    weddingTitle.innerText = "Weddings"
 
     // Brief Desc before services
-    const infoContainer = document.createElement("div")
-    infoContainer.className = "info-container"
+    const weddingContainer = document.createElement("div")
+    weddingContainer.className = "info-container"
 
     const description = document.createElement("p")
     description.className = "info-description"
@@ -87,28 +105,29 @@ function homePage(): HTMLElement {
     This is just a placement text so that you may write your own description of your services. Services below can be changed, as per what you want to do with celebrancy.
     `
 
-    infoContainer.appendChild(description)
-
+    weddingContainer.appendChild(description)
 
     wrapper.appendChild(pageTitle)
-    wrapper.appendChild(infoContainer)
+    wrapper.appendChild(aboutMe)
+    wrapper.appendChild(weddingTitle)
+    wrapper.appendChild(weddingContainer)
     return wrapper
 }
 
-function celebrationPage(): HTMLElement {
+function ceremoniesPage(): HTMLElement {
     const wrapper = document.createElement("div")
     wrapper.className = "page-wrapper"
 
     const pageTitle = document.createElement("h2")
     pageTitle.className = "page-title"
-    pageTitle.innerText = "Celebrations"
+    pageTitle.innerText = "Ceremonies"
 
     // Services
     const serviceContainer = document.createElement("div")
     serviceContainer.className = "services-container"
 
     const services = [
-        { title: "Weddings", desc: "Lorem Ipsum..." },
+        { title: "Funerals & Memorials", desc: "Lorem Ipsum..." },
         { title: "Vow Renewals", desc: "Lorem Ipsum..." },
         { title: "Baby Naming", desc: "Lorem Ipsum..." }
     ]
@@ -162,8 +181,8 @@ function contactPage(): HTMLElement {
 // Router
 function router(path: string): HTMLElement {
     switch (path) {
-        case "/celebrations":
-            return celebrationPage()
+        case "/ceremonies":
+            return ceremoniesPage()
         case "/faq":
             return faqPage()
         case "/contact":
@@ -183,7 +202,7 @@ function renderPage() {
     // Updating page title
     const pageTitles: Record<string, string> = {
         "/": "Rebecca Roach | Celebrant",
-        "/celebrations": "Rebecca Roach | Celebrations",
+        "/ceremonies": "Rebecca Roach | Celebrations",
         "/faq": "Rebecca Roach | FAQ",
         "/contact": "Rebecca Roach | Contact & Fees"
     }
@@ -229,9 +248,9 @@ const footerInfo = document.createElement("div")
 footerInfo.className = "footer-info"
 footerInfo.innerHTML = `
     <h3>Rebecca Roach | Celebrant</h3>
-    <p>Exeter, Devon</p>
-    <p>Email: email@email.com</p>
-    <p>Phone: 01234 567890</p>
+    <p>Based in Exeter, Devon</p>
+    <p>email@email.com</p>
+    <p>01234 567890</p>
 `
 
 // Right side map
@@ -240,7 +259,7 @@ footerMap.className = "footer-map"
 footerMap.innerHTML = ` 
     <iframe
         src="https://www.google.com/maps?q=Exeter,Devon&output=embed"
-        width="50%"
+        width="75%"
         height="250"
         style="border:0;"
         loading="lazy"

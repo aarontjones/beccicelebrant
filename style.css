@@ -13,7 +13,6 @@ body {
 
 .main-container {
     width: 100%;
-    padding-bottom: 40px;
 }
 
 .content-container {
@@ -168,9 +167,10 @@ body {
 
 /* Footer */
 .footer-container {
-    margin-top: 80px;
+    margin-top: 40px;
     border-top: 1px solid #ddd;
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: #fafafa;
 }
 
@@ -204,6 +204,7 @@ body {
     font-family: 'Cinzel', serif;
     font-size: 24px;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 .footer-info p {
@@ -214,10 +215,13 @@ body {
 .footer-map {
     flex: 1;
     min-width: 300px;
+    align-self: center;
 }
 
 .footer-map iframe {
     border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Mobile View */
