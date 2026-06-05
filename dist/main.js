@@ -42,6 +42,17 @@ function createNavItem(text, href) {
     });
     return link;
 }
+// Creating divider - repeatable
+function createDivider() {
+    const divider = document.createElement("div");
+    divider.className = "divider";
+    divider.innerHTML = `
+        <span class="divider-line-left"></span>
+        <span class="divider-ornament">&#10047;</span>
+        <span class="divider-line-right"></span>
+    `;
+    return divider;
+}
 const navItems = [
     { text: "Ceremonies", href: "#/ceremonies" },
     { text: "FAQ", href: "#/faq" },
@@ -72,7 +83,12 @@ function homePage() {
     aboutMeDesc.innerText = `
     Put in information about yourself, what you "specialise" in, if thats how celebrants work. Wedding section below should be filled out as well. No information about fees on this page, ill put those on Contact & Fees section.
     `;
+    const aboutMeImage = document.createElement("img");
+    aboutMeImage.src = "assets/images/placeholder.png";
+    aboutMeImage.alt = "Rebecca Roach, Celebrant";
+    aboutMeImage.className = "about-image";
     aboutMe.appendChild(aboutMeDesc);
+    aboutMe.appendChild(aboutMeImage);
     // Wedding Subtitle
     const weddingTitle = document.createElement("h2");
     weddingTitle.className = "page-title";
@@ -88,6 +104,7 @@ function homePage() {
     weddingContainer.appendChild(description);
     wrapper.appendChild(pageTitle);
     wrapper.appendChild(aboutMe);
+    wrapper.appendChild(createDivider());
     wrapper.appendChild(weddingTitle);
     wrapper.appendChild(weddingContainer);
     return wrapper;
@@ -98,11 +115,20 @@ function ceremoniesPage() {
     const pageTitle = document.createElement("h2");
     pageTitle.className = "page-title";
     pageTitle.innerText = "Ceremonies";
+    // Info before services
+    const aboutContainer = document.createElement("div");
+    aboutContainer.className = "info-container";
+    const aboutMeDesc = document.createElement("p");
+    aboutMeDesc.className = "info-description";
+    aboutMeDesc.innerText = `
+    I offer a variety of ceremonies.
+    `;
+    aboutContainer.appendChild(aboutMeDesc);
     // Services
     const serviceContainer = document.createElement("div");
     serviceContainer.className = "services-container";
     const services = [
-        { title: "Funerals & Memorials", desc: "Lorem Ipsum..." },
+        { title: "Memorials", desc: "Lorem Ipsum..." },
         { title: "Vow Renewals", desc: "Lorem Ipsum..." },
         { title: "Baby Naming", desc: "Lorem Ipsum..." }
     ];
@@ -120,6 +146,8 @@ function ceremoniesPage() {
         serviceContainer.appendChild(card);
     });
     wrapper.appendChild(pageTitle);
+    wrapper.appendChild(aboutContainer);
+    wrapper.appendChild(createDivider());
     wrapper.appendChild(serviceContainer);
     return wrapper;
 }
@@ -129,7 +157,48 @@ function faqPage() {
     const pageTitle = document.createElement("h2");
     pageTitle.className = "page-title";
     pageTitle.innerText = "FAQ";
+    // FAQ data
+    const faqs = [
+        { q: "What exactly is a celebrant?", a: "Lorem Ipsum..." },
+        { q: "What does the whole process look like?", a: "Lorem Ipsum..." },
+        { q: "How long is a ceremony?", a: "Lorem Ipsum..." },
+        { q: "Can we include religious or spiritual elements?", a: "Lorem Ipsum..." },
+        { q: "How far in advance should we book?", a: "Lorem Ipsum..." },
+        { q: "Where do your services cover?", a: "Lorem Ipsum..." },
+        { q: "Can we write our own vows?", a: "Lorem Ipsum..." },
+        { q: "Can you help write with our own vows too?", a: "Lorem Ipsum..." }
+    ];
+    const faqContainer = document.createElement("div");
+    faqContainer.className = "faq-container";
+    faqs.forEach(({ q, a }) => {
+        const item = document.createElement("div");
+        item.className = "faq-item";
+        const button = document.createElement("button");
+        button.className = "faq-question";
+        button.innerHTML = `
+            <span>${q}</span>
+            <span class="faq-icon">&#10047;</span>
+        `;
+        const content = document.createElement("div");
+        content.className = "faq-answer";
+        const answertext = document.createElement("p");
+        answertext.innerText = a;
+        content.appendChild(answertext);
+        button.addEventListener("click", () => {
+            const wasOpen = item.classList.contains("faq-item--open");
+            faqContainer.querySelectorAll(".faq-item").forEach((faq) => {
+                faq.classList.remove("faq-item--open");
+            });
+            if (!wasOpen) {
+                item.classList.toggle("faq-item--open");
+            }
+        });
+        item.appendChild(button);
+        item.appendChild(content);
+        faqContainer.appendChild(item);
+    });
     wrapper.appendChild(pageTitle);
+    wrapper.appendChild(faqContainer);
     return wrapper;
 }
 function contactPage() {

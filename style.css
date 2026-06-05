@@ -1,3 +1,5 @@
+@import url("./colours.css");
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +9,8 @@
 
 body {
     font-family: 'Libre Baskerville', serif;
-    background-color: #f5f5f5;
-    color: #111;
+    background-color: var(--petal-blush);
+    color: var(--bark);
 }
 
 .main-container {
@@ -26,9 +28,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 35px;
-    margin-top: 35px;
+    padding: 20px;
     position: relative;
+    background-color: var(--antique-cream);
+    border-bottom: 1px solid var(--rose-hip);
 }
 
 .main-title {
@@ -37,10 +40,22 @@ body {
     letter-spacing: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .main-title--active {
-    border-bottom: 1px solid #111;
+    opacity: 1;
+}
+
+.main-title--active::after {    
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(to right, transparent, var(--rose-hip), transparent);
 }
 
 /* Navbar */
@@ -56,7 +71,8 @@ body {
     font-size: 18px;
     letter-spacing: 2px;
     text-decoration: none;
-    color: #111;
+    color: var(--bark);
+    position: relative;
 }
 
 .nav-link:hover {
@@ -65,8 +81,17 @@ body {
 
 .nav-link--active {
     opacity: 1;
-    border-bottom: 1px solid #111;
-    padding-bottom: 2px;
+}
+
+.nav-link--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(to right, transparent, var(--rose-hip), transparent);
 }
 
 /* Hamburger Menu for Mobile View */
@@ -85,14 +110,6 @@ body {
     width: 24px;
     height: 24px;
     display: block;
-}
-
-.hamburger-line {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: #111;
-    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .hamburger--open .hamburger-line:nth-child(1) {
@@ -122,13 +139,41 @@ body {
     flex-direction: column;
 }
 
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 60%;
+    margin: 0 auto 20px;
+}
+
+.divider-line-left {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--rose-hip));
+}
+
+.divider-line-right {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, transparent, var(--rose-hip));
+}
+
+.divider-ornament {
+    font-size: 18px;
+    color: var(--rose-hip);
+    flex-shrink: 0;
+}
+
 /* Home page only */
 /* Services */
 .services-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
     padding: 60px 40px;
+    gap: 40px;
+    align-self: center;
     width: 100%;
 }
 
@@ -146,23 +191,94 @@ body {
     letter-spacing: 2px;
     font-weight: 400;
     align-self: center;
+    color: var(--bark);
+    border-bottom: 1px solid var(--rose-hip);
 }
 
 .service-body {
     font-family: 'Libre Baskerville', serif;
     font-size: 15px;
     line-height: 1.5;
-    color: #444;
+    color: var(--bark);
 }
 
 /* Info */
 .info-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
     padding: 60px 40px;
-    width: 100%;
+    width: 75%;
+    align-self: center;
 }
 
 .info-description {
     font-size: 18px;
+}
+
+.about-image {
+    width: 280px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* FAQ Page only */
+.faq-container {
+    width: 60%;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    background-color: var(--antique-cream);
+    border: 1px solid rgba(var(--rose-hip-rgb), 0.3);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: var(--bark);
+}
+
+.faq-icon {
+    font-size: 24px;
+    color: var(--rose-hip);
+    transition: transform 0.3s ease;
+}
+
+.faq-item--open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.faq-answer p {
+    padding: 0 20px 20px;
+    line-height: 1.6;
+    color: var(--bark);
+}
+
+.faq-item--open .faq-answer {
+    max-height: 300px;
 }
 
 /* Footer */
@@ -171,7 +287,8 @@ body {
     border-top: 1px solid #ddd;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: #fafafa;
+    background-color: var(--lighter-bark);
+    border-top: 1px solid var(--rose-hip);
 }
 
 /* Logos */
@@ -179,11 +296,12 @@ body {
     display: flex;
     justify-content: center;
     gap: 40px;
+    margin-top: 40px;
     margin-bottom: 40px;
 }
 
 .footer-logo {
-    height: 120px;
+    height: 200px;
     width: auto;
     object-fit: contain;
 }
@@ -205,17 +323,20 @@ body {
     font-size: 24px;
     margin-bottom: 16px;
     text-align: center;
+    color: var(--muted-rose);
 }
 
 .footer-info p {
     margin-bottom: 8px;
     line-height: 1.6;
+    color: var(--muted-rose);
 }
 
 .footer-map {
     flex: 1;
     min-width: 300px;
     align-self: center;
+    margin-bottom: 20px;
 }
 
 .footer-map iframe {
@@ -225,7 +346,7 @@ body {
 }
 
 /* Mobile View */
-@media (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .title-container {
         flex-direction: row;
         justify-content: space-between;
@@ -269,9 +390,9 @@ body {
         position: absolute;
         top: 100%;
         right: 20px;
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-        padding: 10px 0;
+        background-color: var(--antique-cream);
+        border: 1px solid rgba(var(--rose-hip-rgb), 0.5);
+
         min-width: 180px;
         z-index: 100;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -302,7 +423,7 @@ body {
     }
 
     .footer-logo {
-        height: 80px;
+        height: 140px;
         width: auto;
         object-fit: contain;
     }
@@ -311,8 +432,29 @@ body {
         flex-direction: column;
     }
 
+    .info-container {
+        flex-direction: column;
+    }
+
+    .about-image {
+        align-self: center;
+        max-width: 350px;
+    }
+
+    .faq-container {
+        width: 80%;
+    }
+
     .footer-map {
         width: 100%;
         min-width: unset;
+    }
+
+    .main-title--active::after {    
+        height: 1px;
+    }
+
+    .nav-link--active::after {
+        height: 1px;
     }
 }
