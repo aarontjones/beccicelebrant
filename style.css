@@ -13,6 +13,11 @@ body {
     color: var(--bark);
 }
 
+body, .main-container, .container {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 .main-container {
     width: 100%;
 }
@@ -343,6 +348,8 @@ body {
     border-radius: 8px;
     display: block;
     margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* Mobile View */
@@ -424,6 +431,7 @@ body {
 
     .footer-logo {
         height: 140px;
+        max-width: 80%; /* Shrinks i its bad */
         width: auto;
         object-fit: contain;
     }
