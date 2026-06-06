@@ -101,7 +101,7 @@ function homePage(): HTMLElement {
     `
 
     const aboutMeImage = document.createElement("img")
-    aboutMeImage.src = "assets/images/placeholder.png"
+    aboutMeImage.src = "assets/images/RR-LOGO.png"
     aboutMeImage.alt = "Rebecca Roach, Celebrant"
     aboutMeImage.className = "about-image"
 
@@ -121,6 +121,8 @@ function homePage(): HTMLElement {
     description.className = "info-description"
     description.innerText = `
     This is just a placement text so that you may write your own description of your services. Services below can be changed, as per what you want to do with celebrancy.
+    
+    This can also contain some pictures that you may have of weddings.
     `
 
     weddingContainer.appendChild(description)
@@ -148,7 +150,7 @@ function ceremoniesPage(): HTMLElement {
     const aboutMeDesc = document.createElement("p")
     aboutMeDesc.className = "info-description"
     aboutMeDesc.innerText = `
-    I offer a variety of ceremonies.
+    This page is for other ceremonies, other than weddings, which is available on the main home page, which is accessible by clicking your name.
     `
 
     aboutContainer.appendChild(aboutMeDesc)
@@ -255,11 +257,150 @@ function contactPage(): HTMLElement {
     const wrapper = document.createElement("div")
     wrapper.className = "page-wrapper"
 
-    const pageTitle = document.createElement("h2")
-    pageTitle.className = "page-title"
-    pageTitle.innerText = "Contact & Fees"
+    // Fees Section
+    const feeTitle = document.createElement("h2")
+    feeTitle.className = "page-title"
+    feeTitle.innerText = "Fees"
 
-    wrapper.appendChild(pageTitle)
+    const feeContainer = document.createElement("div")
+    feeContainer.className = "info-container"
+
+    const feeInfo = document.createElement("p")
+    feeInfo.className = "info-description"
+    feeInfo.innerText = `
+    Fee information goes here - you can either do a table, or just a paragraph of information.
+    `
+
+    feeContainer.appendChild(feeInfo)
+
+    const contactTitle = document.createElement("h2")
+    contactTitle.className = "page-title"
+    contactTitle.innerText = "Contact Me"
+
+    // Contact Section
+    // Email Form
+    const formContainer = document.createElement("div")
+    formContainer.className = "contact-form-container"
+
+    const nameRow = document.createElement("div")
+    nameRow.className = "contact-form-row"
+
+    function createField(labelText: string, inputType: string, id: string, required = true): HTMLDivElement {
+        const group = document.createElement("div")
+        group.className = "contact-form-group"
+
+        const label = document.createElement("label")
+        label.htmlFor = id
+        label.innerText = labelText
+        label.className = "contact-label"
+
+        const input = document.createElement("input")
+        input.type = inputType
+        input.id = id
+        input.name = id
+        input.required = required
+        input.className = "contact-input"
+
+        group.appendChild(label)
+        group.appendChild(input)
+        return group
+    }
+
+
+    nameRow.appendChild(createField("First Name", "text", "firstName"))
+    nameRow.appendChild(createField("Last Name", "text", "lastName"))
+
+    const emailGroup = createField("Email Address", "email", "emailAddress")
+
+    // Message Field
+    const messageGroup = document.createElement("div")
+    messageGroup.className = "contact-form-group"
+
+    const messageLabel = document.createElement("label")
+    messageLabel.htmlFor = "message"
+    messageLabel.innerText = "Message"
+    messageLabel.className = "contact-label"
+
+    const messageInput = document.createElement("textarea")
+    messageInput.id = "message"
+    messageInput.name = "message"
+    messageInput.required = true
+    messageInput.className = "contact-input contact-textarea"
+    messageInput.rows = 6
+
+    messageGroup.appendChild(messageLabel)
+    messageGroup.appendChild(messageInput)
+
+    // Status Message
+    const statusMsg = document.createElement("p")
+    statusMsg.className = "contact-status"
+
+    // Submit
+    const submitButton = document.createElement("button")
+    submitButton.type = "button"
+    submitButton.innerText = "Send Message"
+    submitButton.className = "contact-submit"
+
+    // Emailing
+    submitButton.addEventListener("click", async () => {
+        const firstName = (document.getElementById("firstName") as HTMLInputElement).value.trim()
+        const lastName = (document.getElementById("lastName") as HTMLInputElement).value.trim()
+        const email = (document.getElementById("emailAddress") as HTMLInputElement).value.trim()
+        const message = (document.getElementById("message") as HTMLInputElement).value.trim()
+    
+        if (!firstName || !lastName || !email || !message) {
+            statusMsg.innerText = "Please fill in all fields."
+            statusMsg.className = "contact-status contact-status--error"
+            return
+        }
+        
+        submitButton.disabled = true
+        submitButton.innerText = "Sending..."
+        statusMsg.innerText = ""
+
+        try {
+            const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    service_id: "service_3uqf8sw",
+                    template_id: "template_ekml3cn",
+                    user_id: "VkUd-iTmvNVCP3l32",
+                    template_params: {
+                        from_name: `${firstName} ${lastName}`,
+                        from_email: email,
+                        message: message,
+                        to_email: "aarontjones4722@gmail.com" // Change
+                    }
+                })
+            })
+
+            if (response.ok) {
+                statusMsg.innerText = "Message Sent! I'll be in contact soon."
+                statusMsg.className = "contact-status contact-status--success"
+                submitButton.innerText = "Sent"
+            } else {
+                throw new Error("Send failed")
+            }
+        } catch {
+            statusMsg.innerText = "Something went wrong. Please try again."
+            statusMsg.className = "contact-status contact-status--error"
+            submitButton.disabled = false
+            submitButton.innerText = "Send Message"
+        }
+    })
+
+    formContainer.appendChild(nameRow)
+    formContainer.appendChild(emailGroup)
+    formContainer.appendChild(messageGroup)
+    formContainer.appendChild(submitButton)
+    formContainer.appendChild(statusMsg)
+
+    wrapper.appendChild(feeTitle)
+    wrapper.appendChild(feeContainer)
+    wrapper.appendChild(createDivider())
+    wrapper.appendChild(contactTitle)
+    wrapper.appendChild(formContainer)
     return wrapper
 }
 

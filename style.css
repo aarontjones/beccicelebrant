@@ -225,7 +225,7 @@ body, .main-container, .container {
     width: 280px;
     height: auto;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 6px;
     flex-shrink: 0;
 }
 
@@ -284,6 +284,94 @@ body, .main-container, .container {
 
 .faq-item--open .faq-answer {
     max-height: 300px;
+}
+
+/* Contact Page */
+.contact-form-container {
+    width: 55%;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-form-row .contact-form-group {
+    flex: 1;
+}
+
+.contact-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact-label {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--bark);
+}
+
+.contact-input {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    padding: 12px 14px;
+    border: 1px solid rgba(var(--rose-hip-rgb), 0.4);
+    background-color: var(--antique-cream);
+    color: var(--bark);
+    outline: none;
+    transition: border-color 0.2s ease;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.contact-input:focus {
+    border-color: var(--rose-hip);
+}
+
+.contact-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.contact-submit {
+    align-self: flex-start;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 14px 32px;
+    background-color: transparent;
+    border: 1px solid var(--rose-hip);
+    color: var(--bark);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-submit:hover:not(:disabled) {
+    background-color: rgba(var(--rose-hip-rgb), 0.1);
+}
+
+.contact-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.contact-status {
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.contact-status--success {
+    color: #5a7a5a;
+}
+
+.contact-status--error {
+    color: #a05050;
 }
 
 /* Footer */
