@@ -11,14 +11,10 @@ mainContainer.className = "main-container"
 const titleContainer = document.createElement("div")
 titleContainer.className = "title-container"
 
-const title = document.createElement("h2")
+const title = document.createElement("img")
+title.src = "assets/images/logos/RR-Celebrant-Logo-Long.png"
+title.alt = "Rebecca Roach | Celebrant"
 title.className = "main-title"
-title.innerText = "Rebecca Roach | Celebrant"
-title.style.cursor = "pointer"
-title.addEventListener("click", () => { // Clicking takes back to home-page
-    window.history.pushState({}, "", "#/")
-    renderPage()
-})
 
 // Hamburger menu - used only for mobile view
 const hamburger = document.createElement("button")
@@ -63,6 +59,7 @@ function createDivider(): HTMLElement {
 }
 
 const navItems = [
+    { text: "About Me", href: "#/" },
     { text: "Ceremonies", href: "#/ceremonies" },
     { text: "FAQ", href: "#/faq" },
     { text: "Contact & Fees", href: "#/contact" }
@@ -101,8 +98,8 @@ function homePage(): HTMLElement {
     `
 
     const aboutMeImage = document.createElement("img")
-    aboutMeImage.src = "assets/images/RR-LOGO.png"
-    aboutMeImage.alt = "Rebecca Roach, Celebrant"
+    aboutMeImage.src = "assets/images/placeholder.png"
+    aboutMeImage.alt = "Rebecca Roach"
     aboutMeImage.className = "about-image"
 
     aboutMe.appendChild(aboutMeDesc)
@@ -414,8 +411,11 @@ function router(path: string): HTMLElement {
         case "/contact":
             return contactPage()
         case "/":
-        default:
             return homePage()
+        default:
+            const div = document.createElement("div")
+            div.innerText = "404 Not Found"
+            return div
     }
 }
 
@@ -439,8 +439,6 @@ function renderPage() {
         const anchor = link as HTMLAnchorElement
         anchor.classList.toggle("nav-link--active", anchor.href.endsWith(window.location.hash))
     })
-
-    title.classList.toggle("main-title--active", path === "/")
 }
 
 // Footer
@@ -475,7 +473,7 @@ footerInfo.className = "footer-info"
 footerInfo.innerHTML = `
     <h3>Rebecca Roach | Celebrant</h3>
     <p>Based in Exeter, Devon</p>
-    <p>email@email.com</p>
+    <p>rebecca.roach74@gmail.com</p>
     <p>01234 567890</p>
 `
 
