@@ -394,12 +394,18 @@ const footerContent = document.createElement("div");
 footerContent.className = "footer-content";
 const footerInfo = document.createElement("div");
 footerInfo.className = "footer-info";
-footerInfo.innerHTML = `
-    <h3>Rebecca Roach | Celebrant</h3>
+const footerLogo = document.createElement("img");
+footerLogo.src = "assets/images/logos/RR-Celebrant-Logo-Short.png";
+footerLogo.alt = "Rebecca Roach | Celebrant";
+footerLogo.className = "footer-info-logo";
+const footerInfoText = document.createElement("div");
+footerInfoText.innerHTML = `
     <p>Based in Exeter, Devon</p>
     <p>rebecca.roach74@gmail.com</p>
     <p>01234 567890</p>
 `;
+footerInfo.appendChild(footerLogo);
+footerInfo.appendChild(footerInfoText);
 // Right side map
 const footerMap = document.createElement("div");
 footerMap.className = "footer-map";
