@@ -425,9 +425,13 @@ footerContent.appendChild(footerInfo);
 footerContent.appendChild(footerMap);
 footerContainer.appendChild(footerLogos);
 footerContainer.appendChild(footerContent);
+// Gradient between main content and footer
+const gradientBridge = document.createElement("div");
+gradientBridge.className = "gradient-bridge";
 // Appending
 mainContainer.appendChild(titleContainer);
 mainContainer.appendChild(contentContainer);
+mainContainer.appendChild(gradientBridge);
 mainContainer.appendChild(footerContainer);
 container.appendChild(mainContainer);
 app.appendChild(container);

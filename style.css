@@ -43,6 +43,7 @@ body, .main-container, .container {
     height: 325px;
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 1));
 }
 
 /* Navbar */
@@ -60,6 +61,7 @@ body, .main-container, .container {
     text-decoration: none;
     color: var(--bark);
     position: relative;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link:hover {
@@ -117,6 +119,7 @@ body, .main-container, .container {
     text-align: center;
     width: 100%;
     margin-top: 60px;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .page-wrapper {
@@ -139,18 +142,30 @@ body, .main-container, .container {
     flex: 1;
     height: 2px;
     background: linear-gradient(to right, transparent, var(--rose-hip));
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .divider-line-right {
     flex: 1;
     height: 2px;
     background: linear-gradient(to left, transparent, var(--rose-hip));
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .divider-ornament {
     font-size: 18px;
     color: var(--rose-hip);
     flex-shrink: 0;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradient */
+
+.gradient-bridge {
+    width: 100%;
+    margin-top: 40px;
+    height: 25px;
+    background: linear-gradient(to bottom, var(--petal-blush), var(--lighter-bark));
 }
 
 /* Home page only */
@@ -224,6 +239,7 @@ body, .main-container, .container {
     background-color: var(--antique-cream);
     border: 1px solid rgba(var(--rose-hip-rgb), 0.3);
     overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .faq-question {
@@ -246,6 +262,7 @@ body, .main-container, .container {
     font-size: 24px;
     color: var(--rose-hip);
     transition: transform 0.3s ease;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .faq-item--open .faq-icon {
@@ -297,6 +314,7 @@ body, .main-container, .container {
     font-size: 14px;
     letter-spacing: 1px;
     color: var(--bark);
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .contact-input {
@@ -310,6 +328,7 @@ body, .main-container, .container {
     transition: border-color 0.2s ease;
     border-radius: 2px;
     width: 100%;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .contact-input:focus {
@@ -358,12 +377,9 @@ body, .main-container, .container {
 
 /* Footer */
 .footer-container {
-    margin-top: 40px;
-    border-top: 1px solid #ddd;
     padding-left: 40px;
     padding-right: 40px;
     background-color: var(--lighter-bark);
-    border-top: 1px solid var(--rose-hip);
 }
 
 /* Logos */
@@ -371,7 +387,6 @@ body, .main-container, .container {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 40px;
     margin-bottom: 40px;
 }
 
@@ -401,6 +416,7 @@ body, .main-container, .container {
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
 }
 
 .footer-info p {
