@@ -457,26 +457,27 @@ body, .main-container, .container {
     }
 
     .navbar {
-        display: none;
+        display: flex;          
         flex-direction: column;
         gap: 0;
-        position: fixed; 
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;              
+        bottom: 0;
         background-color: var(--antique-cream);
         z-index: 100;
         justify-content: center;
         align-items: center;
         opacity: 0;
-        transition: opacity 0.25s ease;
+        visibility: hidden; 
+        transition: opacity 0.25s ease, visibility 0.25s ease;
         pointer-events: none;
     }
 
     .navbar--open {
-        display: flex;
         opacity: 1;
+        visibility: visible;
         pointer-events: all;
     }
 
