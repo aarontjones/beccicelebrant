@@ -401,7 +401,7 @@ footerLogo.className = "footer-info-logo";
 const footerInfoText = document.createElement("div");
 footerInfoText.innerHTML = `
     <p>Based in Exeter, Devon</p>
-    <p>rebecca.roach74@gmail.com</p>
+    <p>rebeccaroachcelebrant@gmail.com</p>
     <p>01234 567890</p>
 `;
 footerInfo.appendChild(footerLogo);
