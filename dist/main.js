@@ -32,6 +32,7 @@ navbar.className = "navbar";
 hamburger.addEventListener("click", () => {
     const isOpen = navbar.classList.toggle("navbar--open");
     hamburger.classList.toggle("hamburger--open", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
 });
 function createNavItem(text, href) {
     const link = document.createElement("a");
@@ -42,6 +43,7 @@ function createNavItem(text, href) {
         e.preventDefault();
         navbar.classList.remove("navbar--open");
         hamburger.classList.remove("hamburger--open");
+        document.body.style.overflow = "";
         window.history.pushState({}, "", href);
         renderPage();
     });
