@@ -429,7 +429,11 @@ body, .main-container, .container {
     flex: 1;
     min-width: 300px;
     align-self: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.footer-text {
+    font-size: 24px;
 }
 
 .footer-map iframe {

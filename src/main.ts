@@ -436,10 +436,11 @@ function renderPage() {
     }
     document.title = pageTitles[path] ?? "Rebecca Roach | Celebrant"
 
+    const currentHash = window.location.hash || "#/"
     // Update Active Nav Link
     document.querySelectorAll(".nav-link").forEach((link) => {
         const anchor = link as HTMLAnchorElement
-        anchor.classList.toggle("nav-link--active", anchor.href.endsWith(window.location.hash))
+        anchor.classList.toggle("nav-link--active", anchor.getAttribute("href") === currentHash)
     })
 }
 
@@ -480,9 +481,9 @@ footerLogo.className = "footer-info-logo"
 
 const footerInfoText = document.createElement("div")
 footerInfoText.innerHTML = `
-    <p>Based in Exeter, Devon</p>
-    <p>rebeccaroachcelebrant@gmail.com</p>
-    <p>01234 567890</p>
+    <p class="footer-text">Based in Exeter, Devon</p>
+    <p class="footer-text">rebeccaroachcelebrant@gmail.com</p>
+    <p class="footer-text">01234 567890</p>
 `
 
 footerInfo.appendChild(footerLogo)
@@ -494,8 +495,8 @@ footerMap.className = "footer-map"
 footerMap.innerHTML = ` 
     <iframe
         src="https://www.google.com/maps?q=Exeter,Devon&output=embed"
-        width="75%"
-        height="250"
+        width="50%"
+        height="400"
         style="border:0;"
         loading="lazy"
         allowfullscreen="">
