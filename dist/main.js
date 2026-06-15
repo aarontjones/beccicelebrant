@@ -7,6 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+// Imports for text
+import { aboutMeText, weddingText, ritualText } from "./content/home.js";
+import { ceremonyBlurb, inclusivityText, serviceBaby, serviceFuneral, serviceNaming } from "./content/ceremonies.js";
+import { q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 } from "./content/faq.js";
+import { feesText } from "./content/contact.js";
 const app = document.getElementById("app");
 if (!app)
     throw new Error("App container not found");
@@ -88,9 +93,7 @@ function homePage() {
     aboutMe.className = "info-container";
     const aboutMeDesc = document.createElement("p");
     aboutMeDesc.className = "info-description";
-    aboutMeDesc.innerText = `
-    Put in information about yourself, what you "specialise" in, if thats how celebrants work. Wedding section below should be filled out as well. No information about fees on this page, ill put those on Contact & Fees section.
-    `;
+    aboutMeDesc.innerText = aboutMeText;
     const aboutMeImage = document.createElement("img");
     aboutMeImage.src = "assets/images/placeholder.png";
     aboutMeImage.alt = "Rebecca Roach";
@@ -101,22 +104,37 @@ function homePage() {
     const weddingTitle = document.createElement("h2");
     weddingTitle.className = "page-title";
     weddingTitle.innerText = "Weddings";
+    // Wedding tagline
+    const weddingTagline = document.createElement("p");
+    weddingTagline.className = "page-tagline";
+    weddingTagline.innerText = "Your Story. Your Day. Your Ceremony";
     // Brief Desc before services
     const weddingContainer = document.createElement("div");
     weddingContainer.className = "info-container";
-    const description = document.createElement("p");
-    description.className = "info-description";
-    description.innerText = `
-    This is just a placement text so that you may write your own description of your services. Services below can be changed, as per what you want to do with celebrancy.
-    
-    This can also contain some pictures that you may have of weddings.
-    `;
-    weddingContainer.appendChild(description);
+    const weddingDescription = document.createElement("p");
+    weddingDescription.className = "info-description";
+    weddingDescription.innerHTML = weddingText;
+    weddingContainer.appendChild(weddingDescription);
+    // Rituals and Symbolic Moments
+    const ritualTitle = document.createElement("h2");
+    ritualTitle.className = "page-title";
+    ritualTitle.innerText = "Meaningful Rituals & Symbolic Moments";
+    // Container
+    const ritualContainer = document.createElement("div");
+    ritualContainer.className = "info-container";
+    const ritualDescription = document.createElement("p");
+    ritualDescription.className = "info-description";
+    ritualDescription.innerHTML = ritualText;
+    ritualContainer.appendChild(ritualDescription);
     wrapper.appendChild(pageTitle);
     wrapper.appendChild(aboutMe);
     wrapper.appendChild(createDivider());
     wrapper.appendChild(weddingTitle);
+    wrapper.appendChild(weddingTagline);
     wrapper.appendChild(weddingContainer);
+    wrapper.appendChild(createDivider());
+    wrapper.appendChild(ritualTitle);
+    wrapper.appendChild(ritualContainer);
     return wrapper;
 }
 function ceremoniesPage() {
@@ -130,35 +148,68 @@ function ceremoniesPage() {
     aboutContainer.className = "info-container";
     const aboutMeDesc = document.createElement("p");
     aboutMeDesc.className = "info-description";
-    aboutMeDesc.innerText = `
-    This page is for other ceremonies, other than weddings, which is available on the main home page, which is accessible by clicking your name.
-    `;
+    aboutMeDesc.innerHTML = ceremonyBlurb;
     aboutContainer.appendChild(aboutMeDesc);
     // Services
     const serviceContainer = document.createElement("div");
     serviceContainer.className = "services-container";
     const services = [
-        { title: "Memorials", desc: "Lorem Ipsum..." },
-        { title: "Vow Renewals", desc: "Lorem Ipsum..." },
-        { title: "Baby Naming", desc: "Lorem Ipsum..." }
+        {
+            title: "Funeral Services",
+            desc: serviceFuneral,
+            bg: "assets/images/funeral-bg.jpg"
+        },
+        {
+            title: "Baby Naming Ceremonies",
+            desc: serviceBaby,
+            bg: "assets/images/baby-bg.jpg"
+        },
+        {
+            title: "Other Naming Ceremonies",
+            desc: serviceNaming,
+            bg: "assets/images/other-bg.jpg"
+        }
     ];
-    services.forEach(({ title, desc }) => {
+    services.forEach(({ title, desc, bg }) => {
         const card = document.createElement("div");
         card.className = "service-card";
+        card.style.setProperty("--card-bg", `url(${bg})`);
         const heading = document.createElement("h3");
         heading.className = "service-title";
         heading.innerText = title;
         const body = document.createElement("p");
         body.className = "service-body";
-        body.innerText = desc;
+        body.innerHTML = desc;
+        // Mobile accordion toggle
+        card.addEventListener("click", () => {
+            const wasOpen = card.classList.contains("service-card--open");
+            serviceContainer.querySelectorAll(".service-card").forEach(c => {
+                c.classList.remove("service-card--open");
+            });
+            if (!wasOpen)
+                card.classList.add("service-card--open");
+        });
         card.appendChild(heading);
         card.appendChild(body);
         serviceContainer.appendChild(card);
     });
+    // Inclusivity Section
+    const inclusivityTitle = document.createElement("h2");
+    inclusivityTitle.className = "page-title";
+    inclusivityTitle.innerText = "Celebrating Love in All Its Forms";
+    const inclusivityContainer = document.createElement("div");
+    inclusivityContainer.className = "info-container";
+    const inclusivityDescription = document.createElement("p");
+    inclusivityDescription.className = "info-description";
+    inclusivityDescription.innerHTML = inclusivityText;
+    inclusivityContainer.appendChild(inclusivityDescription);
     wrapper.appendChild(pageTitle);
     wrapper.appendChild(aboutContainer);
     wrapper.appendChild(createDivider());
     wrapper.appendChild(serviceContainer);
+    wrapper.appendChild(createDivider());
+    wrapper.appendChild(inclusivityTitle);
+    wrapper.appendChild(inclusivityContainer);
     return wrapper;
 }
 function faqPage() {
@@ -169,14 +220,46 @@ function faqPage() {
     pageTitle.innerText = "FAQ";
     // FAQ data
     const faqs = [
-        { q: "What exactly is a celebrant?", a: "Lorem Ipsum..." },
-        { q: "What does the whole process look like?", a: "Lorem Ipsum..." },
-        { q: "How long is a ceremony?", a: "Lorem Ipsum..." },
-        { q: "Can we include religious or spiritual elements?", a: "Lorem Ipsum..." },
-        { q: "How far in advance should we book?", a: "Lorem Ipsum..." },
-        { q: "Where do your services cover?", a: "Lorem Ipsum..." },
-        { q: "Can we write our own vows?", a: "Lorem Ipsum..." },
-        { q: "Can you help write with our own vows too?", a: "Lorem Ipsum..." }
+        {
+            q: "What exactly is a celebrant?",
+            a: q1
+        },
+        {
+            q: "Does a Celebrant need to be qualified?",
+            a: q2
+        },
+        {
+            q: "What's the difference between a Celebrant and a Registrar?",
+            a: q3
+        },
+        {
+            q: "How does this all work?",
+            a: q4
+        },
+        {
+            q: "Can we include Religious or Spiritual elements?",
+            a: q5
+        },
+        {
+            q: "How far in advance should we book?",
+            a: q6
+        },
+        {
+            q: "What area do your services cover?",
+            a: q7
+        },
+        {
+            q: "What does a Ceremony cost?",
+            a: q8
+        },
+        {
+            q: "Can we write our own vows?",
+            a: q9
+        },
+        {
+            q: "What about themed weddings?",
+            a: q10
+        }
     ];
     const faqContainer = document.createElement("div");
     faqContainer.className = "faq-container";
@@ -192,7 +275,7 @@ function faqPage() {
         const content = document.createElement("div");
         content.className = "faq-answer";
         const answertext = document.createElement("p");
-        answertext.innerText = a;
+        answertext.innerHTML = a;
         content.appendChild(answertext);
         button.addEventListener("click", () => {
             const wasOpen = item.classList.contains("faq-item--open");
@@ -222,9 +305,7 @@ function contactPage() {
     feeContainer.className = "info-container";
     const feeInfo = document.createElement("p");
     feeInfo.className = "info-description";
-    feeInfo.innerText = `
-    Fee information goes here - you can either do a table, or just a paragraph of information.
-    `;
+    feeInfo.innerHTML = feesText;
     feeContainer.appendChild(feeInfo);
     const contactTitle = document.createElement("h2");
     contactTitle.className = "page-title";
@@ -438,5 +519,4 @@ container.appendChild(mainContainer);
 app.appendChild(container);
 window.addEventListener("popstate", renderPage);
 renderPage();
-export {};
 //# sourceMappingURL=main.js.map

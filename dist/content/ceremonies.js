@@ -1,0 +1,50 @@
+// These files are used to store a lot of text.
+export const ceremonyBlurb = `
+    <p>Whether you're marking a significant anniversary, renewing your vows after years of marriage, or simply taking a moment to reflect on the journey you've shared, a ceremony offers a beautiful way to honour your relationship and everything you've built together.</p>
+    <br>
+    <p>Life rarely follows a straight path. Through the years, you've collected memories, overcome challenges, celebrated successes, and grown both as individuals and as a couple. A vow renewal or anniversary ceremony is an opportunity to pause, look back on that journey, and celebrate the love that continues to carry you forward.</p>
+    <br>
+    <p>There are no rules. Your ceremony can be as intimate or as grand as you wish. It might be a private moment shared between the two of you, or a joyful gathering surrounded by family and friends.</p>
+    <br>
+    <p>You may choose to exchange new vows, share stories from your years together, include children or grandchildren, or incorporate meaningful rituals that reflect your lives today.</p>
+    <br>
+    <p>I'll work with you to create a ceremony thats personal and full of meaning. Together, we'll tell your story, not just how it began, but everything that has happened since. The laughter, the milestones, the adventures, and the quiet moments that have shaped <b>your</b> life together.</p>
+    `;
+export const serviceFuneral = `
+    <p>The passing of loved ones has been marked by those that loved them for thousands of years.</p>
+    <br>
+    <p>A funeral is a ritual , one that can be unique to the person that has passed but is part of processing the grief, a vital part of healing. It’s a space to remember, to say goodbye, and to begin to make sense of what’s been lost. They help us honour a life in a way that’s meaningful and true. That’s where I can help you, my role goes beyond leading a service, it’s about walking alongside you during one of life’s most difficult chapters. I’ll take the time to get to know your loved one’s story, their quirks, their passions, the things that made them them. Then, together, we’ll create a farewell that feels personal, authentic, and full of heart.</p>
+    <br>
+    <p>Whether it’s a traditional service with quiet reverence or something more unconventional , think music that mattered to them, readings that speak to their spirit, or even a few well-placed jokes that’ll make everyone laugh through the tears, I’ll help you craft a ceremony that reflects who they were and how deeply they’re loved. Led with dignity and care, my promise is this: your loved one’s story will be told with respect, compassion, and the kind of attention that turns a funeral into a truly meaningful tribute. You don’t have to do this alone, I’m here to listen, to guide, and to make sure their farewell is as unique as the life it celebrates.</p>
+    `;
+export const serviceBaby = `
+    <p>A Baby Naming Ceremony is a beautiful way to welcome a child into their family and community. Unlike a religious christening or baptism, a naming ceremony is a non-religious celebration that can be personalised to reflect <b>your</b> family's values, beliefs, and traditions. It’s a perfect opportunity for parents, grandparents, siblings, family members, and friends to come together and celebrate the arrival of a child. It can include promises from parents, the appointment of guideparents or mentors, readings, poems, music, and symbolic rituals that make the occasion unique and meaningful.</p>
+    <br>
+    <p>They can also be a wonderful way to celebrate adopted children, bringing family and friends together to officially welcome a child into their new family and mark the beginning of an exciting new chapter. The ceremony can acknowledge the child's journey, celebrate the bonds that have been formed, and create lasting memories for everyone involved.</p>
+    <br>
+    <p>As with all my ceremonies, it’s carefully tailored to reflect your family's story, ensuring a heartfelt and memorable celebration that honours your child and the people who love them.</p>
+    <h2>
+    `;
+export const serviceNaming = `
+    <p>Every name has a story. Every new beginning deserves recognition.</p>
+    <br>
+    <p>A name can mark a new beginning, a hard-won achievement, a personal transformation, or a dream brought to life. It can represent identity, purpose, freedom, and hope for the future.</p>
+    <br>
+    <p>For some people, a naming ceremony marks a deeply personal journey. Following a divorce, a ceremony can provide a meaningful way to celebrate independence, resilience, and the start of a new chapter.</p>
+    <br>
+    <p>For those affirming their gender identity, a naming ceremony can be a powerful and joyful occasion, honouring a chosen name and celebrating the courage, authenticity, and self-discovery that brought them to this moment.</p>
+    <br>
+    <p>Perhaps you have built a business from the ground up and are ready to launch it into the world. Maybe you have lovingly restored a boat or moved into a new home or have a pet that you would like to welcome into your family.</p>
+    <br>
+    <p>Whatever the reason, a bespoke naming ceremony offers the opportunity to pause, reflect, and celebrate what this name means to you and those who share your journey.</p>
+    <br>
+    <p>Together, we will create a ceremony that is entirely personal and unique. There are no templates and no expectations — only a ceremony designed around what matters most to <b>YOU</b></p>
+    `;
+export const inclusivityText = `
+    <p>Love is not defined by gender, tradition, or expectation, but by the connection between two people.</p>
+    <br>
+    <p>I am proud to create and deliver inclusive ceremonies that celebrate couples and honour every unique love story. Your ceremony should be a reflection of who you are and free from outdated traditions or expectations that don't feel right for you.</p>
+    <br>
+    <p>Whatever ceremony you're planning, I will work with you to create a celebration where you feel seen, respected, and celebrated exactly as you are and provide a welcoming, affirming space where every couple can share their story with pride, surrounded by the people who matter most. Because at the end of the day, the most important thing is not who you love, but that you love and are loved in return and that is what truly matters.</p>
+    `;
+//# sourceMappingURL=ceremonies.js.map

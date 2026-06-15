@@ -1,0 +1,2 @@
+export declare const feesText = "\n    <p>As stated in the FAQ section, a standard package costs \u00A3895. For more details, please get in touch by entering your details into the form below, to email me. Alternatively, you can email me directly at rebeccaroachcelebrant@gmail.com</p>\n    <br>\n    <p>No personal information is stored on the website, its only passed onto myself.</p>\n    ";
+//# sourceMappingURL=contact.d.ts.map
