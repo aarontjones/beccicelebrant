@@ -11,6 +11,20 @@ export const ceremonyBlurb = `
     <p>I'll work with you to create a ceremony thats personal and full of meaning. Together, we'll tell your story, not just how it began, but everything that has happened since. The laughter, the milestones, the adventures, and the quiet moments that have shaped <b>your</b> life together.</p>
     `
 
+export const serviceWedding = `
+    <p>Your wedding ceremony should feel like you - because it is <b>ALL</b> about <b>YOU!</b></p>
+    <br>
+    <p>This is the moment where your love story takes centre stage. The laughter you've shared, the milestones you've celebrated, the adventures you've had together, and the promises you're about to make. No two couples are the same, and <b>your</b> ceremony shouldn't be either.</p>
+    <br>
+    <p>That's why I take the time to get to know you both and create a completely unique ceremony, written from scratch and tailored to your personalities, your relationship, and the atmosphere you want to create on your special day.</p>
+    <br>
+    <p>There are no generic scripts or borrowed words here. Every ceremony I write is personal, and designed to reflect who you are as a couple.</p>
+    <br>
+    <p>Together, we'll create a ceremony that feels authentic, heartfelt, and unforgettable — not only for you, but for every one of your wedding guests.</p>
+    <br>
+    <p>Because this isn't just another wedding day. It's <b>your</b> wedding day, and your ceremony deserves to be every bit as special as the love story that brought you here.</p>
+    `
+
 export const serviceFuneral = `
     <p>The passing of loved ones has been marked by those that loved them for thousands of years.</p>
     <br>
@@ -25,7 +39,6 @@ export const serviceBaby = `
     <p>They can also be a wonderful way to celebrate adopted children, bringing family and friends together to officially welcome a child into their new family and mark the beginning of an exciting new chapter. The ceremony can acknowledge the child's journey, celebrate the bonds that have been formed, and create lasting memories for everyone involved.</p>
     <br>
     <p>As with all my ceremonies, it’s carefully tailored to reflect your family's story, ensuring a heartfelt and memorable celebration that honours your child and the people who love them.</p>
-    <h2>
     ` 
 
 export const serviceNaming = `
@@ -44,6 +57,18 @@ export const serviceNaming = `
     <p>Together, we will create a ceremony that is entirely personal and unique. There are no templates and no expectations — only a ceremony designed around what matters most to <b>YOU</b></p>
     `
 
+export const serviceRenewal = `
+    <p>Whether you're marking a significant anniversary, renewing your vows after years of marriage, or simply taking a moment to reflect on the journey you've shared, a ceremony offers a beautiful way to honour your relationship and everything you've built together.</p>
+    <br>
+    <p>Life rarely follows a straight path. Through the years, you've collected memories, overcome challenges, celebrated successes, and grown both as individuals and as a couple. A vow renewal or anniversary ceremony is an opportunity to pause, look back on that journey, and celebrate the love that continues to carry you forward.</p>
+    <br>
+    <p>There are no rules. Your ceremony can be as intimate or as grand as you wish. It might be a private moment shared between the two of you, or a joyful gathering surrounded by family and friends. You may choose to exchange new vows, share stories from your years together, include children or grandchildren, or incorporate meaningful rituals that reflect your lives today.</p>
+    <br>
+    <p>I'll work with you to create a ceremony thats personal and full of meaning. Together, we'll tell your story, not just how it began, but everything that has happened since. The laughter, the milestones, the adventures, and the quiet moments that have shaped your life together.</p>
+    <br>
+
+`
+
 export const inclusivityText = `
     <p>Love is not defined by gender, tradition, or expectation, but by the connection between two people.</p>
     <br>
@@ -51,3 +76,4 @@ export const inclusivityText = `
     <br>
     <p>Whatever ceremony you're planning, I will work with you to create a celebration where you feel seen, respected, and celebrated exactly as you are and provide a welcoming, affirming space where every couple can share their story with pride, surrounded by the people who matter most. Because at the end of the day, the most important thing is not who you love, but that you love and are loved in return and that is what truly matters.</p>
     `
+

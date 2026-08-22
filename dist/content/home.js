@@ -1,32 +1,24 @@
 // These files are used to store a lot of text.
 export const aboutMeText = `
-    Hello! I’m Rebecca and I’m a celebrant based in the South West.
-
-    Welcome to my website. Here you’ll find the all the information you need about the services that I offer. 
+    Hello, I'm Rebecca Roach and I’m a celebrant based in the South West.
     
-    Whatever your celebration, I can help you mark these special life occasions in a way that is truly unique to you.
+    For almost three decades, I have cared for people as a pharmacist, supporting people and families through many of life's most significant moments. I've celebrated new arrivals, offered reassurance during challenging times, witnessed love stories unfold, and been honoured to support families as they prepare and say goodbye to loved ones. Supporting people through life's milestones has always been at the heart of what I do, and celebrancy allows me to continue that journey in a deeply personal and meaningful way.
     
-    I love people and I love listening to peoples stories. For me, love and human connections make this world. 
+    All my experience has taught me something simple: LOVE is the thread that weaves through every important chapter of our lives. Love is what brings families together to welcome a new child, what inspires couples to make lifelong promises to each other, what draws people back to renew their vows to celebrate the enduring commitment of love and what fills a room when we gather to honour a life well lived. 
+    
+    Every ceremony is a celebration of love in its many forms: romantic love, family love and friendship, and love is what bonds us across generations. It is these connections, and the stories they create, that shape who we are and deserve to be celebrated.
 
-    In my career, I have had the privilege of being involved in many milestone moments of peoples lives.
-
-    As Elizabeth Barrett Browning said, ‘Love doesn’t make the world go round, Love is what makes the ride worthwhile.’
-
-    If you have further questions please get in touch via the contact form.
+    As a celebrant, I believe every milestone deserves to be celebrated in a way that feels personal, unique and memorable. No two people or family or love or life stories are the same, which is why I take the time to get to know you and create a ceremony that reflects YOU - your values, your personality and your journey!
     `;
-export const weddingText = `
-    <p>Your wedding ceremony should feel like you - because it is <b>ALL</b> about <b>YOU!</b></p>
+export const celebrantText = `
+    <p>Unlike a traditional or religious ceremony, one that is celebrant-led has no template or rules. It’s  completely centred around you. It gives you the freedom to include personal stories, meaningful readings, family traditions, symbolic rituals and all the little details that make your celebration unique.</p>
     <br>
-    <p>This is the moment where your love story takes centre stage. The laughter you've shared, the milestones you've celebrated, the adventures you've had together, and the promises you're about to make. No two couples are the same, and <b>your</b> ceremony shouldn't be either.</p>
+    <p>Whether you're planning a wedding, naming ceremony, vow renewal, celebration of life or any other type of ceremony, my role is to help you create one that feels like you,  heartfelt, genuine and unforgettable.</p>
     <br>
-    <p>That's why I take the time to get to know you both and create a completely unique ceremony, written from scratch and tailored to your personalities, your relationship, and the atmosphere you want to create on your special day.</p>
+    <p>I'd be delighted to help tell your story and create a ceremony filled with warmth, meaning and, above all, <b>LOVE!</b></p>
     <br>
-    <p>There are no generic scripts or borrowed words here. Every ceremony I write is personal, and designed to reflect who you are as a couple.</p>
-    <br>
-    <p>Together, we'll create a ceremony that feels authentic, heartfelt, and unforgettable — not only for you, but for every one of your wedding guests.</p>
-    <br>
-    <p>Because this isn't just another wedding day. It's <b>your</b> wedding day, and your ceremony deserves to be every bit as special as the love story that brought you here.</p>
-    `;
+    <p>Please have a look around the website and contact info.</p>
+`;
 export const ritualText = `
     <p>A wedding ceremony is about so much more than the words spoken. It's about creating moments that your guests can see, feel, and connect with. If you want to add another layer of meaning to your day, you may consider incorporating a ritual or symbolic moment into your ceremony.</p>
     <br>

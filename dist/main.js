@@ -8,10 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // Imports for text
-import { aboutMeText, weddingText, ritualText } from "./content/home.js";
-import { ceremonyBlurb, inclusivityText, serviceBaby, serviceFuneral, serviceNaming } from "./content/ceremonies.js";
+import { aboutMeText, celebrantText, ritualText } from "./content/home.js";
+import { ceremonyBlurb, inclusivityText, serviceBaby, serviceFuneral, serviceNaming, serviceWedding, serviceRenewal } from "./content/ceremonies.js";
 import { q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 } from "./content/faq.js";
-import { feesText } from "./content/contact.js";
 const app = document.getElementById("app");
 if (!app)
     throw new Error("App container not found");
@@ -70,8 +69,7 @@ function createDivider() {
 const navItems = [
     { text: "About Me", href: "#/" },
     { text: "Ceremonies", href: "#/ceremonies" },
-    { text: "FAQ", href: "#/faq" },
-    { text: "Contact & Fees", href: "#/contact" }
+    { text: "FAQ", href: "#/faq" }
 ];
 navItems.forEach(({ text, href }) => {
     navbar.appendChild(createNavItem(text, href));
@@ -102,21 +100,16 @@ function homePage() {
     aboutMeImage.className = "about-image";
     aboutMe.appendChild(aboutMeDesc);
     aboutMe.appendChild(aboutMeImage);
-    // Wedding Subtitle
-    const weddingTitle = document.createElement("h2");
-    weddingTitle.className = "page-title";
-    weddingTitle.innerText = "Weddings";
-    // Wedding tagline
-    const weddingTagline = document.createElement("p");
-    weddingTagline.className = "page-tagline";
-    weddingTagline.innerText = "Your Story. Your Day. Your Ceremony";
-    // Brief Desc before services
-    const weddingContainer = document.createElement("div");
-    weddingContainer.className = "info-container";
-    const weddingDescription = document.createElement("p");
-    weddingDescription.className = "info-description";
-    weddingDescription.innerHTML = weddingText;
-    weddingContainer.appendChild(weddingDescription);
+    // Why hire a celebrant section
+    const celebrantTitle = document.createElement("h2");
+    celebrantTitle.className = "page-title";
+    celebrantTitle.innerText = "Why Choose a Celebrant?";
+    const celebrantContainer = document.createElement("div");
+    celebrantContainer.className = "info-container";
+    const celebrantDescription = document.createElement("p");
+    celebrantDescription.className = "info-description";
+    celebrantDescription.innerHTML = celebrantText;
+    celebrantContainer.appendChild(celebrantDescription);
     // Rituals and Symbolic Moments
     const ritualTitle = document.createElement("h2");
     ritualTitle.className = "page-title";
@@ -128,15 +121,135 @@ function homePage() {
     ritualDescription.className = "info-description";
     ritualDescription.innerHTML = ritualText;
     ritualContainer.appendChild(ritualDescription);
+    // Contact Form
+    const contactTitle = document.createElement("h2");
+    contactTitle.className = "page-title";
+    contactTitle.innerText = "Contact Me";
+    // Contact Section
+    // Email Form
+    const formContainer = document.createElement("div");
+    formContainer.className = "contact-form-container";
+    const nameRow = document.createElement("div");
+    nameRow.className = "contact-form-row";
+    function createField(labelText, inputType, id, required = true) {
+        const group = document.createElement("div");
+        group.className = "contact-form-group";
+        const label = document.createElement("label");
+        label.htmlFor = id;
+        label.innerText = labelText;
+        label.className = "contact-label";
+        const input = document.createElement("input");
+        input.type = inputType;
+        input.id = id;
+        input.name = id;
+        input.required = required;
+        input.className = "contact-input";
+        group.appendChild(label);
+        group.appendChild(input);
+        return group;
+    }
+    nameRow.appendChild(createField("First Name", "text", "firstName"));
+    nameRow.appendChild(createField("Last Name", "text", "lastName"));
+    const emailGroup = createField("Email Address", "email", "emailAddress");
+    // Message Field
+    const messageGroup = document.createElement("div");
+    messageGroup.className = "contact-form-group";
+    const messageLabel = document.createElement("label");
+    messageLabel.htmlFor = "message";
+    messageLabel.innerText = "Message";
+    messageLabel.className = "contact-label";
+    const messageInput = document.createElement("textarea");
+    messageInput.id = "message";
+    messageInput.name = "message";
+    messageInput.required = true;
+    messageInput.className = "contact-input contact-textarea";
+    messageInput.rows = 6;
+    messageGroup.appendChild(messageLabel);
+    messageGroup.appendChild(messageInput);
+    // Status Message
+    const statusMsg = document.createElement("p");
+    statusMsg.className = "contact-status";
+    // Submit
+    const submitButton = document.createElement("button");
+    submitButton.type = "button";
+    submitButton.innerText = "Send Message";
+    submitButton.className = "contact-submit";
+    // Emailing
+    submitButton.addEventListener("click", () => __awaiter(this, void 0, void 0, function* () {
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("emailAddress").value.trim();
+        const message = document.getElementById("message").value.trim();
+        if (!firstName || !lastName || !email || !message) {
+            statusMsg.innerText = "Please fill in all fields.";
+            statusMsg.className = "contact-status contact-status--error";
+            return;
+        }
+        submitButton.disabled = true;
+        submitButton.innerText = "Sending...";
+        statusMsg.innerText = "";
+        try {
+            const response = yield fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    service_id: "service_3uqf8sw",
+                    template_id: "template_ekml3cn",
+                    user_id: "VkUd-iTmvNVCP3l32",
+                    template_params: {
+                        from_name: `${firstName} ${lastName}`,
+                        from_email: email,
+                        message: message,
+                        to_email: "aarontjones4722@gmail.com" // Change
+                    }
+                })
+            });
+            if (response.ok) {
+                statusMsg.innerText = "Message Sent! I'll be in contact soon.";
+                statusMsg.className = "contact-status contact-status--success";
+                submitButton.innerText = "Sent";
+            }
+            else {
+                throw new Error("Send failed");
+            }
+        }
+        catch (_a) {
+            statusMsg.innerText = "Something went wrong. Please try again.";
+            statusMsg.className = "contact-status contact-status--error";
+            submitButton.disabled = false;
+            submitButton.innerText = "Send Message";
+        }
+    }));
+    formContainer.appendChild(nameRow);
+    formContainer.appendChild(emailGroup);
+    formContainer.appendChild(messageGroup);
+    formContainer.appendChild(submitButton);
+    formContainer.appendChild(statusMsg);
+    const contactMap = document.createElement("div");
+    contactMap.className = "contact-map";
+    contactMap.innerHTML = ` 
+        <iframe
+            src="https://www.google.com/maps?q=Exeter,Devon&output=embed"
+            width="50%"
+            height="400"
+            style="border:0;"
+            loading="lazy"
+            allowfullscreen="">
+        </iframe>
+    `;
     wrapper.appendChild(pageTitle);
     wrapper.appendChild(aboutMe);
     wrapper.appendChild(createDivider());
-    wrapper.appendChild(weddingTitle);
-    wrapper.appendChild(weddingTagline);
-    wrapper.appendChild(weddingContainer);
+    wrapper.appendChild(celebrantTitle);
+    wrapper.appendChild(celebrantContainer);
     wrapper.appendChild(createDivider());
     wrapper.appendChild(ritualTitle);
     wrapper.appendChild(ritualContainer);
+    wrapper.appendChild(createDivider());
+    wrapper.appendChild(contactTitle);
+    wrapper.appendChild(formContainer);
+    wrapper.appendChild(createDivider());
+    wrapper.appendChild(contactMap);
     return wrapper;
 }
 function ceremoniesPage() {
@@ -157,7 +270,7 @@ function ceremoniesPage() {
     serviceContainer.className = "services-container";
     const services = [
         {
-            title: "Funeral Services",
+            title: "Funerals",
             desc: serviceFuneral,
             bg: "assets/images/funeral-bg.jpg"
         },
@@ -170,6 +283,16 @@ function ceremoniesPage() {
             title: "Other Naming Ceremonies",
             desc: serviceNaming,
             bg: "assets/images/other-bg.jpg"
+        },
+        {
+            title: "Weddings",
+            desc: serviceWedding,
+            bg: "assets/images/wedding-bg.jpg"
+        },
+        {
+            title: "Vow Renewals",
+            desc: serviceRenewal,
+            bg: "assets/images/renewal-bg.png"
         }
     ];
     services.forEach(({ title, desc, bg }) => {
@@ -296,129 +419,6 @@ function faqPage() {
     wrapper.appendChild(faqContainer);
     return wrapper;
 }
-function contactPage() {
-    const wrapper = document.createElement("div");
-    wrapper.className = "page-wrapper";
-    // Fees Section
-    const feeTitle = document.createElement("h2");
-    feeTitle.className = "page-title";
-    feeTitle.innerText = "Fees";
-    const feeContainer = document.createElement("div");
-    feeContainer.className = "info-container";
-    const feeInfo = document.createElement("p");
-    feeInfo.className = "info-description";
-    feeInfo.innerHTML = feesText;
-    feeContainer.appendChild(feeInfo);
-    const contactTitle = document.createElement("h2");
-    contactTitle.className = "page-title";
-    contactTitle.innerText = "Contact Me";
-    // Contact Section
-    // Email Form
-    const formContainer = document.createElement("div");
-    formContainer.className = "contact-form-container";
-    const nameRow = document.createElement("div");
-    nameRow.className = "contact-form-row";
-    function createField(labelText, inputType, id, required = true) {
-        const group = document.createElement("div");
-        group.className = "contact-form-group";
-        const label = document.createElement("label");
-        label.htmlFor = id;
-        label.innerText = labelText;
-        label.className = "contact-label";
-        const input = document.createElement("input");
-        input.type = inputType;
-        input.id = id;
-        input.name = id;
-        input.required = required;
-        input.className = "contact-input";
-        group.appendChild(label);
-        group.appendChild(input);
-        return group;
-    }
-    nameRow.appendChild(createField("First Name", "text", "firstName"));
-    nameRow.appendChild(createField("Last Name", "text", "lastName"));
-    const emailGroup = createField("Email Address", "email", "emailAddress");
-    // Message Field
-    const messageGroup = document.createElement("div");
-    messageGroup.className = "contact-form-group";
-    const messageLabel = document.createElement("label");
-    messageLabel.htmlFor = "message";
-    messageLabel.innerText = "Message";
-    messageLabel.className = "contact-label";
-    const messageInput = document.createElement("textarea");
-    messageInput.id = "message";
-    messageInput.name = "message";
-    messageInput.required = true;
-    messageInput.className = "contact-input contact-textarea";
-    messageInput.rows = 6;
-    messageGroup.appendChild(messageLabel);
-    messageGroup.appendChild(messageInput);
-    // Status Message
-    const statusMsg = document.createElement("p");
-    statusMsg.className = "contact-status";
-    // Submit
-    const submitButton = document.createElement("button");
-    submitButton.type = "button";
-    submitButton.innerText = "Send Message";
-    submitButton.className = "contact-submit";
-    // Emailing
-    submitButton.addEventListener("click", () => __awaiter(this, void 0, void 0, function* () {
-        const firstName = document.getElementById("firstName").value.trim();
-        const lastName = document.getElementById("lastName").value.trim();
-        const email = document.getElementById("emailAddress").value.trim();
-        const message = document.getElementById("message").value.trim();
-        if (!firstName || !lastName || !email || !message) {
-            statusMsg.innerText = "Please fill in all fields.";
-            statusMsg.className = "contact-status contact-status--error";
-            return;
-        }
-        submitButton.disabled = true;
-        submitButton.innerText = "Sending...";
-        statusMsg.innerText = "";
-        try {
-            const response = yield fetch("https://api.emailjs.com/api/v1.0/email/send", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    service_id: "service_3uqf8sw",
-                    template_id: "template_ekml3cn",
-                    user_id: "VkUd-iTmvNVCP3l32",
-                    template_params: {
-                        from_name: `${firstName} ${lastName}`,
-                        from_email: email,
-                        message: message,
-                        to_email: "aarontjones4722@gmail.com" // Change
-                    }
-                })
-            });
-            if (response.ok) {
-                statusMsg.innerText = "Message Sent! I'll be in contact soon.";
-                statusMsg.className = "contact-status contact-status--success";
-                submitButton.innerText = "Sent";
-            }
-            else {
-                throw new Error("Send failed");
-            }
-        }
-        catch (_a) {
-            statusMsg.innerText = "Something went wrong. Please try again.";
-            statusMsg.className = "contact-status contact-status--error";
-            submitButton.disabled = false;
-            submitButton.innerText = "Send Message";
-        }
-    }));
-    formContainer.appendChild(nameRow);
-    formContainer.appendChild(emailGroup);
-    formContainer.appendChild(messageGroup);
-    formContainer.appendChild(submitButton);
-    formContainer.appendChild(statusMsg);
-    wrapper.appendChild(feeTitle);
-    wrapper.appendChild(feeContainer);
-    wrapper.appendChild(createDivider());
-    wrapper.appendChild(contactTitle);
-    wrapper.appendChild(formContainer);
-    return wrapper;
-}
 // Router
 function router(path) {
     switch (path) {
@@ -426,8 +426,6 @@ function router(path) {
             return ceremoniesPage();
         case "/faq":
             return faqPage();
-        case "/contact":
-            return contactPage();
         case "/":
             return homePage();
         default:
@@ -465,7 +463,7 @@ footerContainer.className = "footer-container";
 const footerLogos = document.createElement("div");
 footerLogos.className = "footer-logos";
 const logos = [
-    "assets/icons/ICPC_COLLEGE_BANNER.png",
+    "assets/icons/ICPC_MEMBER_LOGO.png",
     "assets/icons/ICPC_CELEBRANT_LOGO.png"
 ];
 logos.forEach((src, index) => {
@@ -488,25 +486,11 @@ const footerInfoText = document.createElement("div");
 footerInfoText.innerHTML = `
     <p class="footer-text">Based in Exeter, Devon</p>
     <p class="footer-text">rebeccaroachcelebrant@gmail.com</p>
-    <p class="footer-text">01234 567890</p>
+    <p class="footer-text">07952 706688</p>
 `;
 footerInfo.appendChild(footerLogo);
 footerInfo.appendChild(footerInfoText);
-// Right side map
-const footerMap = document.createElement("div");
-footerMap.className = "footer-map";
-footerMap.innerHTML = ` 
-    <iframe
-        src="https://www.google.com/maps?q=Exeter,Devon&output=embed"
-        width="50%"
-        height="400"
-        style="border:0;"
-        loading="lazy"
-        allowfullscreen="">
-    </iframe>
-`; // Figure out how to align centre.
 footerContent.appendChild(footerInfo);
-footerContent.appendChild(footerMap);
 footerContainer.appendChild(footerLogos);
 footerContainer.appendChild(footerContent);
 // Gradient between main content and footer
