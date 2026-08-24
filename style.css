@@ -297,7 +297,8 @@ body, .main-container, .container {
 
 .service-card--open .service-body {
     opacity: 1;
-    max-height: 1000px;
+    max-height: 650px;
+    transition: opacity 0.35s ease 0.1s, max-height 0.4s ease;
 }
 
 /* Info */
