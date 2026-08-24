@@ -70,7 +70,7 @@ function createDivider(): HTMLElement {
 const navItems = [
     { text: "About Me", href: "#/" },
     { text: "Ceremonies", href: "#/ceremonies" },
-    { text: "FAQ", href: "#/faq" }
+    { text: "Wedding FAQ", href: "#/faq" }
 ]
 
 navItems.forEach(({ text, href }) => {
@@ -343,11 +343,11 @@ function ceremoniesPage(): HTMLElement {
     serviceContainer.className = "services-container"
 
     const services = [
+        { title: "Funerals", desc: serviceFuneral, bg: "assets/images/funeral-bg.jpg" },
         { title: "Weddings", desc: serviceWedding, bg: "assets/images/wedding-bg.jpg" },
         { title: "Vow Renewals", desc: serviceRenewal, bg: "assets/images/renewal-bg.png" },
         { title: "Baby Naming Ceremonies", desc: serviceBaby, bg: "assets/images/baby-bg.jpg" },
-        { title: "Other Naming Ceremonies", desc: serviceNaming, bg: "assets/images/other-bg.jpg" },
-        { title: "Funerals", desc: serviceFuneral, bg: "assets/images/funeral-bg.jpg" }
+        { title: "Other Naming Ceremonies", desc: serviceNaming, bg: "assets/images/other-bg.jpg" }
     ]
 
     services.forEach(({ title, desc, bg }) => {
@@ -385,7 +385,7 @@ function faqPage(): HTMLElement {
 
     const pageTitle = document.createElement("h2")
     pageTitle.className = "page-title"
-    pageTitle.innerText = "FAQ"
+    pageTitle.innerText = "Wedding FAQ"
 
     // FAQ data
     const faqs = [
@@ -551,7 +551,7 @@ footerLogo.className = "footer-info-logo"
 
 const footerInfoText = document.createElement("div")
 footerInfoText.innerHTML = `
-    <p class="footer-text">Based in Exeter, Devon</p>
+    <p class="footer-text">Based in Exeter and East Devon</p>
     <p class="footer-text">rebeccaroachcelebrant@gmail.com</p>
     <p class="footer-text">07952 706688</p>
 `
