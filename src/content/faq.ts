@@ -37,7 +37,7 @@ export const q6 = `
 
 export const q7 = "<p>I live in East Devon and cover Exeter and the surrounding area as standard. However, I would happily officiate ceremonies anywhere in the South West. If your chosen venue is a little further afield, I may charge a small mileage fee to cover travel costs. Just let me know where you're planning your special day, and I'll be happy to provide a tailored quote. If you are thinking of other places in the UK or even a destination wedding, get in touch for a chat.</p>"
 
-export const q8 = "My fee starts from £895 for a standard package. Get in touch for more details."
+export const q8 = "To get details about my fees, get in touch for the details by using the contact form, or by emailing me."
 
 export const q9 = `
             <p>Of course you can, but don’t worry if you get stuck. I will always be there to support you!</p>

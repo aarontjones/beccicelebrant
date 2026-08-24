@@ -108,8 +108,9 @@ function homePage(): HTMLElement {
     aboutMeImage.alt = "Rebecca Roach"
     aboutMeImage.className = "about-image"
 
-    aboutMe.appendChild(aboutMeDesc)
     aboutMe.appendChild(aboutMeImage)
+    aboutMe.appendChild(aboutMeDesc)
+
 
     // Why hire a celebrant section
     const celebrantTitle = document.createElement("h2")
@@ -288,7 +289,6 @@ function homePage(): HTMLElement {
     wrapper.appendChild(createDivider())
     wrapper.appendChild(contactTitle)
     wrapper.appendChild(formContainer)
-    wrapper.appendChild(createDivider())
     wrapper.appendChild(contactMap)
     return wrapper
 }
@@ -311,39 +311,8 @@ function ceremoniesPage(): HTMLElement {
 
     aboutContainer.appendChild(aboutMeDesc)
 
-    // Services
-    const serviceContainer = document.createElement("div")
-    serviceContainer.className = "services-container"
-
-    const services = [
-        { 
-            title: "Funerals", 
-            desc: serviceFuneral,
-            bg: "assets/images/funeral-bg.jpg"
-        },
-        { 
-            title: "Baby Naming Ceremonies", 
-            desc: serviceBaby,
-            bg: "assets/images/baby-bg.jpg"
-        },
-        {
-            title: "Other Naming Ceremonies",
-            desc: serviceNaming,
-            bg: "assets/images/other-bg.jpg"
-        },
-        {
-            title: "Weddings",
-            desc: serviceWedding,
-            bg: "assets/images/wedding-bg.jpg"
-        },
-        {
-            title: "Vow Renewals",
-            desc: serviceRenewal,
-            bg: "assets/images/renewal-bg.png"
-        }
-    ]
-
-    services.forEach(({ title, desc, bg }) => {
+    // Service Card Function
+    function createServiceCard(title: string, desc: string, bg: string, container: HTMLElement): void {
         const card = document.createElement("div")
         card.className = "service-card"
         card.style.setProperty("--card-bg", `url(${bg})`)
@@ -356,10 +325,9 @@ function ceremoniesPage(): HTMLElement {
         body.className = "service-body"
         body.innerHTML = desc
 
-        // Mobile accordion toggle
         card.addEventListener("click", () => {
             const wasOpen = card.classList.contains("service-card--open")
-            serviceContainer.querySelectorAll(".service-card").forEach(c => {
+            container.querySelectorAll(".service-card").forEach(c => {
                 c.classList.remove("service-card--open")
             })
             if (!wasOpen) card.classList.add("service-card--open")
@@ -367,7 +335,23 @@ function ceremoniesPage(): HTMLElement {
 
         card.appendChild(heading)
         card.appendChild(body)
-        serviceContainer.appendChild(card)
+        container.appendChild(card)
+    }
+
+    // Services
+    const serviceContainer = document.createElement("div")
+    serviceContainer.className = "services-container"
+
+    const services = [
+        { title: "Weddings", desc: serviceWedding, bg: "assets/images/wedding-bg.jpg" },
+        { title: "Vow Renewals", desc: serviceRenewal, bg: "assets/images/renewal-bg.png" },
+        { title: "Baby Naming Ceremonies", desc: serviceBaby, bg: "assets/images/baby-bg.jpg" },
+        { title: "Other Naming Ceremonies", desc: serviceNaming, bg: "assets/images/other-bg.jpg" },
+        { title: "Funerals", desc: serviceFuneral, bg: "assets/images/funeral-bg.jpg" }
+    ]
+
+    services.forEach(({ title, desc, bg }) => {
+        createServiceCard(title, desc, bg, serviceContainer)
     })
 
     // Inclusivity Section
@@ -376,13 +360,14 @@ function ceremoniesPage(): HTMLElement {
     inclusivityTitle.innerText = "Celebrating Love in All Its Forms"
 
     const inclusivityContainer = document.createElement("div")
-    inclusivityContainer.className = "info-container"
+    inclusivityContainer.className = "services-container"
 
-    const inclusivityDescription = document.createElement("p")
-    inclusivityDescription.className = "info-description"
-    inclusivityDescription.innerHTML = inclusivityText
-
-    inclusivityContainer.appendChild(inclusivityDescription)
+    createServiceCard(
+        "All Love, Celebrated",
+        inclusivityText,
+        "assets/images/header-bg.jpg",
+        inclusivityContainer
+    )
 
     wrapper.appendChild(pageTitle)
     wrapper.appendChild(aboutContainer)

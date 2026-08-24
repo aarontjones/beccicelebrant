@@ -38,7 +38,6 @@ body, .main-container, .container {
     border-bottom: 1px solid var(--rose-hip);
 
     /* Background Image */
-    background-image: url("assets/images/header-bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -234,7 +233,7 @@ body, .main-container, .container {
     border-radius: 14px;
     padding: 20px;
     justify-content: center;
-    min-height: 120px;
+    min-height: 180px;
     background-image: var(--card-bg);
     background-size: cover;
     background-position: center;
@@ -285,10 +284,11 @@ body, .main-container, .container {
 /* Open card expands to fill */
 .service-card--open {
     justify-content: flex-start;
+    border-color: var(--rose-hip)
 }
 
 .service-card--open::before {
-    background: var(--antique-cream);
+    background: var(--petal-blush);
 }
 
 .service-card--open .service-title {
@@ -507,7 +507,7 @@ body, .main-container, .container {
 
 .contact-map {
     width: 65%;
-    margin: 0 auto 60px;
+    margin: 0 auto;
 }
 
 .contact-map iframe {
@@ -571,7 +571,7 @@ body, .main-container, .container {
         flex-direction: column;
         align-items: stretch;
         padding: 40px 20px;
-        gap: 12px;
+        gap: 20px;
         min-height: unset;
     }
 
@@ -580,9 +580,9 @@ body, .main-container, .container {
         max-width: 100% !important;
         opacity: 1 !important;
         pointer-events: auto !important;
+        gap: 16px;
         padding: 20px;
         cursor: pointer;
-        min-height: 80px;
         justify-content: center;
     }
 
@@ -612,7 +612,7 @@ body, .main-container, .container {
     }
 
     .service-card--open::before {
-        background: var(--antique-cream) !important;
+        background: var(--petal-blush) !important;
     }
 
     .page-title {
@@ -700,7 +700,7 @@ body, .main-container, .container {
     }
 
     .contact-map {
-        width: 100%;
+        width: 95%;
     }
 
     .nav-link--active::after {
