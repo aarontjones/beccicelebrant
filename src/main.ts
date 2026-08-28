@@ -265,18 +265,33 @@ function homePage(): HTMLElement {
     formContainer.appendChild(submitButton)
     formContainer.appendChild(statusMsg)
 
+    const mapTitle = document.createElement("h2")
+    mapTitle.className = "page-title"
+    mapTitle.innerText = "Where I Work"
+
+    const mapContainer = document.createElement("div")
+    mapContainer.className = "info-container"
+
+    const mapDescription = document.createElement("p")
+    mapDescription.className = "info-description centre-text"
+    mapDescription.innerHTML = `
+    <p>Here is the area where I work, Including the greater Exeter area.</p>
+    `
+
+    mapContainer.appendChild(mapDescription)
+
     const contactMap = document.createElement("div")
     contactMap.className = "contact-map"
     contactMap.innerHTML = ` 
         <iframe
-            src="https://www.google.com/maps?q=Exeter,Devon&output=embed"
+            src="https://www.google.com/maps?q=East+Devon,+England&output=embed&z=10"
             width="50%"
             height="400"
             style="border:0;"
             loading="lazy"
             allowfullscreen="">
         </iframe>
-    `
+`
 
     wrapper.appendChild(pageTitle)
     wrapper.appendChild(aboutMe)
@@ -289,6 +304,9 @@ function homePage(): HTMLElement {
     wrapper.appendChild(createDivider())
     wrapper.appendChild(contactTitle)
     wrapper.appendChild(formContainer)
+    wrapper.appendChild(createDivider())
+    wrapper.appendChild(mapTitle)
+    wrapper.appendChild(mapContainer)
     wrapper.appendChild(contactMap)
     return wrapper
 }

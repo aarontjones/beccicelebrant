@@ -518,6 +518,12 @@ body, .main-container, .container {
     width: 100%;
 }
 
+/* Only used for 1 sentence */
+.info-description.centre-text,
+.info-description.centre-text p {
+    text-align: center;
+}
+
 .footer-info {
     flex: 1;
     display: flex;
